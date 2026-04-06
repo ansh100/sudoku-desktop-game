@@ -59,14 +59,17 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
+            <version>3.19.9</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
+            <version>3.19.9</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-codegen</artifactId>
+            <version>3.19.9</version>
         </dependency>
     </dependencies>
 
@@ -88,6 +91,7 @@
             <plugin>
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
+                <version>3.19.9</version>
                 <executions>
                     <execution>
                         <id>generate-sources</id>

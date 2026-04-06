@@ -278,10 +278,10 @@ public class MainMenuController implements Initializable {
         String university = authorsResourceBundle.getString("university");
         universityLabel.setText(university);
 
-        String author1 = authorsResourceBundle.getString("247026");
+        String author1 = authorsResourceBundle.getString("7993746");
         author1Label.setText(author1);
 
-        String author2 = authorsResourceBundle.getString("247027");
+        String author2 = authorsResourceBundle.getString("7993746");
         author2Label.setText(author2);
     }
 }

@@ -258,4 +258,22 @@ public class SudokuBoardTest {
         assertFalse(sudokuBoard.equals(clonedBoard));
         assertNotEquals(sudokuBoard.hashCode(), clonedBoard.hashCode());
     }
+
+    @Test
+    void testSetAndGetField_StateConsistency() {
+        // Arrange
+        SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+        int testRow = 0;
+        int testCol = 0;
+        int expectedValue = 5;
+
+        // Act
+        board.setField(testRow, testCol, expectedValue);
+
+        // We get the SudokuField object first, then ask for its integer value
+        int actualValue = board.getField(testRow, testCol).getValue();
+
+        // Assert
+        assertEquals(expectedValue, actualValue, "The retrieved field value must match the exact value that was set.");
+    }
 }

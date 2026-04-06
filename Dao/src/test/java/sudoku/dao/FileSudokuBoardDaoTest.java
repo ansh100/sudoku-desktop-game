@@ -69,5 +69,38 @@ public class FileSudokuBoardDaoTest {
         }
 
     }
+    //new tests
+    @Test
+    public void testReadThrowsSudokuReadException() {
+        try (Dao<SudokuBoard> dao = SudokuBoardDaoFactory.createSudokuBoardDao(TEST_DIRECTORY)) {
+            assertThrows(sudoku.dao.exceptions.SudokuReadException.class, () -> {
+                dao.read("this_file_does_not_exist.txt");
+            });
+        } catch (Exception e) {
+            Assertions.fail("The try-with-resources block failed.");
+        }
+    }
+
+    @Test
+    public void testWriteThrowsSudokuWriteException() {
+        try (Dao<SudokuBoard> dao = SudokuBoardDaoFactory.createSudokuBoardDao("fake_dir/another_dir/locked_dir")) {
+            SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+
+            assertThrows(sudoku.dao.exceptions.SudokuWriteException.class, () -> {
+                dao.write("test_board", board);
+            });
+        } catch (Exception e) {
+            Assertions.fail("The try-with-resources block failed.");
+        }
+    }
+
+    @Test
+    public void testNamesWhenDirectoryDoesNotExist() {
+        try (Dao<SudokuBoard> dao = SudokuBoardDaoFactory.createSudokuBoardDao("non_existent_folder_12345")) {
+            assertTrue(dao.names().isEmpty(), "The names list should be empty for a non-existent directory.");
+        } catch (Exception e) {
+            Assertions.fail("The try-with-resources block failed.");
+        }
+    }
 
 }
